@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.connor</groupId>
+    <artifactId>slump</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>slump</name>
+    <packaging>pom</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <slump-provider-version>0.0.1-SNAPSHOT</slump-provider-version>
+        <slump-service-version>0.0.1-SNAPSHOT</slump-service-version>
+        <slump-common-version>0.0.1-SNAPSHOT</slump-common-version>
+        <slump-codegen-version>0.0.1-SNAPSHOT</slump-codegen-version>
+        <druid.version>1.1.21</druid.version>
+        <mysql.version>8.0.21</mysql.version>
+        <mybatis-plus.version>3.4.0</mybatis-plus.version>
+    </properties>
+
+    <modules>
+        <module>slump-common</module>
+        <module>slump-provider</module>
+        <module>slump-service</module>
+        <module>slump-codegen</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.connor</groupId>
+                <artifactId>common</artifactId>
+                <version>${slump-common-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.connor</groupId>
+                <artifactId>service</artifactId>
+                <version>${slump-service-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.connor</groupId>
+                <artifactId>provider</artifactId>
+                <version>${slump-provider-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.connor</groupId>
+                <artifactId>codegen</artifactId>
+                <version>${slump-codegen-version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -3,8 +3,11 @@ package com.connor.slump;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 public class CodeGenMain {
@@ -35,7 +38,6 @@ public class CodeGenMain {
 
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setTablePrefix("slump_");
-        strategyConfig.setSuperEntityClass("com.connor.slump.model.IBaseModel");
 
         // set数据库表配置对象
         autoGenerator.setStrategy(strategyConfig);

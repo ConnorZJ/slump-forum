@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.VoteUserModel;
+import com.connor.slump.service.VoteUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/voteUserModel")
-public class VoteUserController {
+@RequestMapping("/voteUser")
+public class VoteUserController extends BaseController<VoteUserModel> {
 
+    @Autowired
+    private VoteUserService voteUserService;
+
+    @Override
+    protected IService<VoteUserModel> getService() {
+        return voteUserService;
+    }
 }
 

@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.ManageModel;
+import com.connor.slump.service.ManageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/manageModel")
-public class ManageController {
+@RequestMapping("/manage")
+public class ManageController extends BaseController<ManageModel> {
 
+    @Autowired
+    private ManageService manageService;
+
+    @Override
+    protected IService<ManageModel> getService() {
+        return manageService;
+    }
 }
 

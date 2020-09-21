@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.TopicStateTypeModel;
+import com.connor.slump.service.TopicStateTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/topicStateTypeModel")
-public class TopicStateTypeController {
+@RequestMapping("/topicStateType")
+public class TopicStateTypeController extends BaseController<TopicStateTypeModel> {
 
+    @Autowired
+    private TopicStateTypeService topicStateTypeService;
+
+    @Override
+    protected IService<TopicStateTypeModel> getService() {
+        return topicStateTypeService;
+    }
 }
 

@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.IconModel;
+import com.connor.slump.service.IconService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/iconModel")
-public class IconController {
+@RequestMapping("/icon")
+public class IconController extends BaseController<IconModel> {
 
+    @Autowired
+    private IconService iconService;
+
+    @Override
+    protected IService<IconModel> getService() {
+        return iconService;
+    }
 }
 

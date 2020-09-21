@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.OperateLogModel;
+import com.connor.slump.service.OperateLogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/operateLogModel")
-public class OperateLogController {
+@RequestMapping("/operateLog")
+public class OperateLogController extends BaseController<OperateLogModel> {
 
+    @Autowired
+    private OperateLogService operateLogService;
+
+    @Override
+    protected IService<OperateLogModel> getService() {
+        return operateLogService;
+    }
 }
 

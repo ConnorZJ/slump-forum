@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.AttachmentDownloadModel;
+import com.connor.slump.service.AttachmentDownloadService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/attachmentDownloadModel")
-public class AttachmentDownloadController {
+@RequestMapping("/attachmentDownload")
+public class AttachmentDownloadController extends BaseController<AttachmentDownloadModel> {
 
+    @Autowired
+    private AttachmentDownloadService attachmentDownloadService;
+
+    @Override
+    protected IService<AttachmentDownloadModel> getService() {
+        return attachmentDownloadService;
+    }
 }
 

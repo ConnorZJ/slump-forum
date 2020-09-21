@@ -1,6 +1,10 @@
 package com.connor.slump.controller;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.model.GroupRightModel;
+import com.connor.slump.service.GroupRightService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -14,8 +18,15 @@ import org.springframework.stereotype.Controller;
  * @since 2020-09-17
  */
 @Controller
-@RequestMapping("/slump/groupRightModel")
-public class GroupRightController {
+@RequestMapping("/groupRight")
+public class GroupRightController extends BaseController<GroupRightModel> {
 
+    @Autowired
+    private GroupRightService groupRightService;
+
+    @Override
+    protected IService<GroupRightModel> getService() {
+        return groupRightService;
+    }
 }
 

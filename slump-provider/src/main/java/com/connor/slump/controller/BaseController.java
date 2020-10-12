@@ -1,6 +1,7 @@
 package com.connor.slump.controller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.connor.slump.result.CommonResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,28 +32,32 @@ public abstract class BaseController<T extends Serializable> {
     }
 
     @GetMapping("{id}")
-    public T getById(@PathVariable String id) {
-        return getService().getById(id);
+    public CommonResult<T> getById(@PathVariable String id) {
+        return new CommonResult<T>(getService().getById(id));
     }
 
     @PostMapping
-    public void save(@RequestBody T t) {
+    public CommonResult<T> save(@RequestBody T t) {
         getService().save(t);
+        return new CommonResult<T>();
     }
 
     @PutMapping
-    public void update(@RequestBody T t) {
+    public CommonResult<T> update(@RequestBody T t) {
         getService().updateById(t);
+        return new CommonResult<T>();
     }
 
     @DeleteMapping("{id}")
-    public void deleteById(@PathVariable String id) {
+    public CommonResult<T> deleteById(@PathVariable String id) {
         getService().removeById(id);
+        return new CommonResult<T>();
     }
 
     @DeleteMapping
-    public void batchDelete(@RequestBody List<String> ids) {
+    public CommonResult<T> batchDelete(@RequestBody List<String> ids) {
         getService().removeByIds(ids);
+        return new CommonResult<T>();
     }
 
 }

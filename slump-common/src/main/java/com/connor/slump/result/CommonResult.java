@@ -8,82 +8,80 @@ package com.connor.slump.result;
  * @author Connor
  * @since 2020/9/22
  */
-public class CommonResult<T> {
+public class CommonResult<D> {
 
-    private T data;
-    private int code;
-    private String message;
-    public CommonResult() {
-    }
+    public static final String SUCCESS = "0";
+    public static final String FAIL = "1";
 
-    public CommonResult(T data) {
-        this.data = data;
-    }
-    private enum CodeType {
-        ERROR(1, "失败"),
-        SUCCESS(0, "成功");
+    private String code;
+    private D data;
+    private String msg;
 
-        private int value;
-        private String descript;
-
-        CodeType(int value, String descript) {
-            this.value = value;
-            this.descript = descript;
-        }
-
-        @Override
-        public String toString() {
-            return this.descript;
-        }
-    }
-
-    public CommonResult success() {
-        code = CodeType.SUCCESS.value;
-        message = CodeType.SUCCESS.toString();
-        return this;
-    }
-
-    public CommonResult error() {
-        code = CodeType.ERROR.value;
-        message = CodeType.ERROR.toString();
-        return this;
-    }
-
-    public CommonResult success(String message) {
-        code = CodeType.SUCCESS.value;
-        this.message = message;
-        return this;
-    }
-
-    public CommonResult error(String message) {
-        code = CodeType.ERROR.value;
-        this.message = message;
-        return this;
-    }
-
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
+    private CommonResult(String code) {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public static <T> CommonResult<T> get(String code) {
+        return new CommonResult<>(code);
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public static <T> CommonResult<T> success() {
+        return new CommonResult<T>(SUCCESS).setMsg("操作成功");
+    }
+
+    public static <T> CommonResult<T> success(T data) {
+        return new CommonResult<T>(SUCCESS).setMsg("操作成功").setData(data);
+    }
+
+    public static <T> CommonResult<T> success(String msg) {
+        return new CommonResult<T>(SUCCESS).setMsg(msg);
+    }
+
+    public static <T> CommonResult<T> success(String msg, T data) {
+        return new CommonResult<T>(SUCCESS).setMsg(msg).setData(data);
+    }
+
+    public static <T> CommonResult<T> fail() {
+        return new CommonResult<T>(FAIL).setMsg("操作失败");
+    }
+
+    public static <T> CommonResult<T> fail(String msg) {
+        return new CommonResult<T>(FAIL).setMsg(msg);
+    }
+
+    public static <T> CommonResult<T> fail(String msg, T data) {
+        return new CommonResult<T>(FAIL).setMsg(msg).setData(data);
+    }
+
+    public static <T> CommonResult<T> fail(T data) {
+        return new CommonResult<T>(FAIL).setMsg("操作失败").setData(data);
+    }
+
+    public D getData() {
+        return this.data;
+    }
+
+    public CommonResult<D> setData(D data) {
+        this.data = data;
+        return this;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public CommonResult<D> setCode(String code) {
+        this.code = code;
+        return this;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public CommonResult<D> setMsg(String msg) {
+        this.msg = msg;
+        return this;
     }
 
 }

@@ -33,31 +33,31 @@ public abstract class BaseController<T extends Serializable> {
 
     @GetMapping("{id}")
     public CommonResult<T> getById(@PathVariable String id) {
-        return new CommonResult<T>(getService().getById(id));
+        return CommonResult.success(getService().getById(id));
     }
 
     @PostMapping
     public CommonResult<T> save(@RequestBody T t) {
         getService().save(t);
-        return new CommonResult<T>();
+        return CommonResult.success();
     }
 
     @PutMapping
     public CommonResult<T> update(@RequestBody T t) {
         getService().updateById(t);
-        return new CommonResult<T>();
+        return CommonResult.success();
     }
 
     @DeleteMapping("{id}")
     public CommonResult<T> deleteById(@PathVariable String id) {
         getService().removeById(id);
-        return new CommonResult<T>();
+        return CommonResult.success();
     }
 
     @DeleteMapping
     public CommonResult<T> batchDelete(@RequestBody List<String> ids) {
         getService().removeByIds(ids);
-        return new CommonResult<T>();
+        return CommonResult.success();
     }
 
 }
